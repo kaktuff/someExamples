@@ -41,12 +41,17 @@ public class LikeGrepFirst {
             while (!(oneLine = br.readLine()).equals("ESC")) {
                 //bw.write(oneLine + "\n\r");
                 bw.write(oneLine + "\n");
-                //bw.write("\n\r"); 
+                //bw.write("\n\r");
                 //bw.write("\n");
                 // то есть каждую строку сбрасываем с буфера
                 // TO_DO: это безопасно, но слишком частые обращаения к диск
                 // TO_DO: плюс посмотреть по теории делается ли закрытие файла автоматом
                 bw.flush();
+
+
+
+
+                
             }
 
             //bw.write("Before close" + "\n");
