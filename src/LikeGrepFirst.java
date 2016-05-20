@@ -19,7 +19,7 @@ public class LikeGrepFirst {
      * Метод проверки вход параметров
      */
     public void chkArgs (String[] args){
-       // проверить сначала длину массива
+        // проверить сначала длину массива
         if (args.length != PARAMSCOUNT){
             System.err.println("Incorrect param count");
         }
@@ -36,12 +36,12 @@ public class LikeGrepFirst {
         // создаем буферизованный ридер, для считывания с консоли
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
              BufferedWriter bw = new BufferedWriter(new FileWriter("d:\\java_2016\\home.work\\likeGrepOutFile.txt"))
-            ){
+        ){
 
             while (!(oneLine = br.readLine()).equals("ESC")) {
                 //bw.write(oneLine + "\n\r");
                 bw.write(oneLine + "\n");
-                //bw.write("\n\r");
+                //bw.write("\n\r"); 
                 //bw.write("\n");
                 // то есть каждую строку сбрасываем с буфера
                 // TO_DO: это безопасно, но слишком частые обращаения к диск
