@@ -1,7 +1,5 @@
 package someExamples;
 
-import org.omg.CORBA.SystemException;
-
 import java.io.*;
 
 /**
@@ -51,7 +49,7 @@ public class LikeGrepFirst {
 
 
 
-                
+
             }
 
             //bw.write("Before close" + "\n");
