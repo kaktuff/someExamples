@@ -17,13 +17,15 @@ public class App {
         mainJFrame.setLocationRelativeTo(null);
         mainJFrame.setPreferredSize(new Dimension(500, 400));
 
-        //Container contentPane = new Container();
-        Container contentPane = mainJFrame.getContentPane();
+        Container contentPane = new Container();
+        //Container contentPane = mainJFrame.getContentPane();
         // тут есть ещё другие layout, для красоты как бы лучше наверное что-то другое
         //contentPane.setLayout(new BorderLayout());
         //contentPane.add(new JButton("Select File"), BorderLayout.WEST);
         //contentPane.add(new JButton("Select File"), BorderLayout.SOUTH);
         contentPane.setLayout(new GridBagLayout());
+        contentPane.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+        mainJFrame.add(contentPane);
         /*
         contentPane.add(new JButton("Select File1"),2);
         contentPane.add(new JButton("Select File2"));
@@ -38,15 +40,13 @@ public class App {
 
         button = new JButton("Button 1");
         //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridwidth = 3;
-        c.weightx = 3;
-        c.gridx = 0;
-        c.gridy = 3;
-        c.weightx = 2;
-        c.weighty = 2;
+        //c.fill = GridBagConstraints.VERTICAL;
+        //c.gridwidth = 1;//сколько клеток занимает в строке
+        //c.gridx = -1;
+        //c.gridy = 3;
+        //c.weightx = 1;
+        //c.weighty = 2;
         contentPane.add(button, c);
-
-        //mainJFrame.add(contentPane);
 
         mainJFrame.pack();
         mainJFrame.setVisible(true);
