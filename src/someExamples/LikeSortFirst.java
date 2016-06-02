@@ -100,17 +100,46 @@ Cледует обратить внимание, что если элемент 
         */
         System.out.println("Хотите создать файл? Y/N, 1 - да. введу данные с консоли, 0 - нет. Файл уже существует");
         Scanner scannerIn = new Scanner(System.in);
-        Integer isNeedFillFile = scannerIn.nextInt();
 
-        while (isNeedFillFile != 1 & isNeedFillFile != 0) {
-            System.out.println("Вы ввели недопустимое значение. Введите одно из допустимых Y/N");
-            isNeedFillFile = scannerIn.nextInt();
+        // признак, что мы считали именно число
+
+        int isNum = 0;
+        Integer isNeedFillFile = null;
+        String readOurSout;
+
+        while (isNum == 0){
+            try{
+                isNeedFillFile = scannerIn.nextInt();
+                while (isNeedFillFile != 1 & isNeedFillFile != 0) {
+                    System.out.println("Вы ввели недопустимое значение. Введите одно из допустимых Y/N");
+                    readOurSout = scannerIn.nextLine();
+                    isNeedFillFile = scannerIn.nextInt();
+                }
+                isNum = 1;
+            }catch(java.util.InputMismatchException exInMismatch){
+                System.out.println("Вы ввели символы не являющиеся числом. Попробуйте ещё раз");
+                readOurSout = scannerIn.nextLine();
+            }
         }
 
+        /*
+        Integer isNeedFillFile = null;
+
+        while (isNeedFillFile == null){
+            try{
+                isNeedFillFile = scannerIn.nextInt();
+            }catch(java.util.InputMismatchException exInMismatch){
+                System.out.println("Вы ввели символы не являющиеся числом");
+            }
+        }
+        */
+
+        readOurSout = scannerIn.nextLine();
         System.out.println("Введите путь до файла(существующего или того, что будем создавать)");
         String fileName = scannerIn.nextLine();
 
         System.out.println("Выберите тип сортировки:");
+        String sortType = scannerIn.nextLine();
         // тут надо предложить все варианты, которые есть в Enum SortType
     }
 }
