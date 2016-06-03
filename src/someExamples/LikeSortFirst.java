@@ -141,5 +141,13 @@ Cледует обратить внимание, что если элемент 
         System.out.println("Выберите тип сортировки:");
         String sortType = scannerIn.nextLine();
         // тут надо предложить все варианты, которые есть в Enum SortType
+
+
+        //хочу теперь просто вывести значения переменных
+        // потому что в бесплатной intelliJ не доступен debug
+        // логгировать пока не умею, потом заменить на логи
+        System.out.println("isNeedFillFile - " + isNeedFillFile);
+        System.out.println("fileName - " + fileName);
+        System.out.println("sortType - " + sortType);
     }
 }
