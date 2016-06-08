@@ -86,7 +86,11 @@ public class LikeSortSecond {
            // ошибка возникает, если ввели значение, которго нет в Enum типе
            catch (IllegalArgumentException illegalArgEx){
                System.out.println("Вы ввели недопустимое значение для Типа сортировки. Посмотрите допустимые значения и попробуйте ещё раз:");
-               readOurSout = scannerIn.nextLine();
+               //readOurSout = scannerIn.nextLine();
+               stringReadedSortType = scannerIn.nextLine();// строка считанная с консоли
+               System.out.println("isNeedFillFile - " + isNeedFillFile);
+               System.out.println("fileName - " + fileName);
+               System.out.println("stringReadedSortType - " + stringReadedSortType);
            }
            // это ошибка возникает, если при проверке нахождения строки как значения Enum передано null значение
            catch (NullPointerException nullPointEx){
@@ -103,7 +107,7 @@ public class LikeSortSecond {
         // логгировать пока не умею, потом заменить на логи
         System.out.println("isNeedFillFile - " + isNeedFillFile);
         System.out.println("fileName - " + fileName);
-        System.out.println("sortType - " + sortType);
+        System.out.println("stringReadedSortType - " + stringReadedSortType);
 
     }
 }
