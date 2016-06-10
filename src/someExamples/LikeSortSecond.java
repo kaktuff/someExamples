@@ -1,5 +1,8 @@
 package someExamples;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * Created by poskotinova-ls on 24.05.2016.
  */
@@ -32,6 +35,13 @@ public class LikeSortSecond {
         }
     }
 
+    public void doSort(){
+        //зальем файл построчно в коллекцию и отсортируем её
+        ArrayList<String> fileArrayList = new ArrayList<>();
+
+
+    }
+
 /*
 потом сделаю с GUI окошечком, в котором буду вводить адрес файла
 тип сортировки выбрать из выпадающего списка
@@ -51,8 +61,14 @@ public class LikeSortSecond {
         // TO_DO: сейчас некритично, можно потом поучиться делать
         // TO_DO: проверить корректность пути
         // TO_DO: проверить, что если выбрали признак, что файл существует, что он действительно существует
-        System.out.println("Введите путь до файла(существующего или того, что будем создавать)");
-        String fileName = console.scannerIn.nextLine();
+//System.out.println("Введите путь до файла(существующего или того, что будем создавать)");
+//String fileName = console.scannerIn.nextLine();
+
+        Scanner scannerIn = new Scanner(System.in);
+        //обработчики на наличие файла и тд
+        // считывание имени файла и проверку на его существование лучше вынести в отдельный метод
+        System.out.println("Введите путь до файла(существующего или того, что будем создавать). Для себя, пусть пока такой - C:\\work\\git\\someExamples\\src\\fileLikeSort.txt");
+        String fileName = scannerIn.nextLine();
 
         //считать тип сортировки
         sortType = console.readSortType();
@@ -64,5 +80,7 @@ public class LikeSortSecond {
         likeSortSecond.fillFile();
 
         // теперь запустим механизм сортировки
+        System.out.println("isNeedFillFile - " + isNeedFillFile);
+        System.out.println("fileName - " + fileName);
     }
 }

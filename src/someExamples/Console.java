@@ -12,7 +12,10 @@ import java.util.Scanner;
  * объект для работы с консолью
  */
 public class Console {
-    final static Scanner scannerIn = new Scanner(System.in);
+    // отказалась от идеи единого сканнера, т.к. тогда считывание не совсем корректно
+    // запрос для второго ввода отображается сразу после первого запроса ввода
+    // и значение которое должны были считать по первому запросу получается == null
+    // final static Scanner scannerIn = new Scanner(System.in);
 
     /**
      * метод для считывния с консоли некоего признака - число, in (0, 1)
@@ -30,7 +33,7 @@ public class Console {
             try{
                 mark = scannerIn.nextInt();
                 while (mark != 1 & mark != 0) {
-                    System.out.println("Вы ввели недопустимое значение. Введите одно из допустимых Y/N");
+                    System.out.println("Вы ввели недопустимое значение. Введите одно из допустимых 1/0");
                     readOurSout = scannerIn.nextLine();
                     mark = scannerIn.nextInt();
                 }
@@ -53,12 +56,13 @@ public class Console {
         // обработчика на пустое значение нет, т.к. подобная реализация не считает пустую строку
         Integer mark = null;
         String  readOurSout;
+        Scanner scannerIn = new Scanner(System.in);
 
         while (true){
             try{
                 mark = scannerIn.nextInt();
                 while ((mark != 1 & mark != 0)/*|(mark == null)*/) {
-                    System.out.println("Вы ввели недопустимое значение. Введите одно из допустимых Y/N");
+                    System.out.println("Вы ввели недопустимое значение. Введите одно из допустимых 1/0");
                     readOurSout = scannerIn.nextLine();
                     mark = scannerIn.nextInt();
                 }
@@ -82,6 +86,7 @@ public class Console {
         int isCorrectSortType = 0;
         String  readOurSout;
         SortType readedSortType = null;
+        Scanner scannerIn = new Scanner(System.in);
 
         // Arrays.toString(SortType.values()) - получает все объекты enumа
         System.out.println("Выберите тип сортировки, допустимые значения: " + Arrays.toString(SortType.values()));
@@ -118,6 +123,7 @@ public class Console {
     public SortType readSortType(){
         String  readOurSout;
         SortType readedSortType = null;
+        Scanner scannerIn = new Scanner(System.in);
 
         // Arrays.toString(SortType.values()) - получает все объекты enumа
         System.out.println("Выберите тип сортировки, допустимые значения: " + Arrays.toString(SortType.values()));
@@ -150,9 +156,6 @@ public class Console {
 
             System.out.println("Please, enter your text:");
             // создаем буферизованный ридер, для считывания с консоли
-            // TO_DO: тут может быть как-то по-другому, потому что у меня есть класс консоль, в котором определн статичный Scanner
-            // TO_DO: вообще это первая заготовка, поэтому может быть разбиение на классы не совсем корректно
-            //  TO_DO: позже ещё обдумаю этот момент
             try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                  BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))
             ){
