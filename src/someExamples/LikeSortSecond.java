@@ -1,7 +1,9 @@
 package someExamples;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by poskotinova-ls on 24.05.2016.
@@ -14,6 +16,15 @@ public class LikeSortSecond {
     // над структурой ещё подумать
     // нужно часто обрашаться к элементам, а записать в коллекцию по идее нужно одина раз?
     // или после обращений будем перезаписывать
+    private List<String> fileList = new ArrayList<>();
+
+    public void setFileList(List<String> fileList) {
+        this.fileList = fileList;
+    }
+
+    public List<String> getFileList() {
+        return fileList;
+    }
 
     public LikeSortSecond(String fileName, SortType sortType, int isNeedFillFile) {
         this.fileName = fileName;
@@ -31,15 +42,63 @@ public class LikeSortSecond {
 
     public void fillFile(){
         if (this.getIsNeedFillFile() == 1){
-            Console.fillFile(this.getFileName());
+            Console.fillFileFromSystemIn(this.getFileName());
         }
     }
 
     public void doSort(){
+        // сначала получим коллекцию для файла, отсортируем её и сохраним как параметр объекта
+        this.setFileList(this.getSortedList());
+
+        //теперь сохраним содержимое коллекции в файл
+        Console.fillFile(this.getFileName(), this.getFileList());
+    }
+    public List<String> getSortedList(){
         //зальем файл построчно в коллекцию и отсортируем её
-        ArrayList<String> fileArrayList = new ArrayList<>();
+        // пусть пока будет ArrayList
+        // но т.к. нам нужно делать много вставок, то из этих соображений лучше бы подошёл LinkedList
+        // TO_DO: перенос из файла в коллекцию - это тоже метод
+        List<String> fileListInner = new ArrayList<>();
 
+// это не подходит, надо считывание ПОСТРОЧНО
 
+        try(BufferedReader reader = new BufferedReader(new FileReader(this.getFileName())))
+        {
+            // читаем построчно
+            // TO_DO:  переименовать переменную по-человечески
+            String str;
+            while((str=reader.readLine())!= null){
+
+                System.out.println(str);
+                fileListInner.add(str);
+            }
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
+
+        System.out.println("длина коллекции == " + fileListInner.size());
+
+        // TO_DO: здесь должно быть ветвление по типу сортировки:(по сути это метод диспетчер)
+        // TO_DO: то есть по суди IF и для каждого типа сортировки свой метод
+        // взяла готовый пример
+        // TO_DO: поискать другие варианты, плюс научиться писать этот код самомтсоятельно, чтоб от зубов отскакивал
+        Collections.sort(fileListInner, new Comparator<String>() {
+                    @Override
+                    public int compare(String o1, String o2) {
+                        return o1.toString().compareTo(o2.toString());
+                    }
+                }
+        );
+
+        // теперь нужно вывести коллекцию на экран
+        // TO_DO: вынести конечно же в отдельный метод, пока просто отладка
+        System.out.println(fileListInner);
+
+        // по-хорошему, мы же файл сортируем
+        // поэтому нужно коллекцию целиком записать в файл и вывести его на экран
+        return fileListInner;
     }
 
 /*
@@ -82,5 +141,7 @@ public class LikeSortSecond {
         // теперь запустим механизм сортировки
         System.out.println("isNeedFillFile - " + isNeedFillFile);
         System.out.println("fileName - " + fileName);
+
+        likeSortSecond.doSort();
     }
 }

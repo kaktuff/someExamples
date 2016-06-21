@@ -1,10 +1,8 @@
 package someExamples;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -150,7 +148,8 @@ public class Console {
         return readedSortType;
     }
 
-    public static void fillFile(String fileName){
+    // считывание данных для файла с консоли и сохранение в файл
+    public static void fillFileFromSystemIn(String fileName){
         // чтение построчно
         String oneLine;
 
@@ -172,5 +171,20 @@ public class Console {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+    }
+
+    // заполнение файла данными из коллекции
+    // TO_DO: не закончен, дописать, работу с самим файлом
+    public static void fillFile(String fileName, List listName){
+        // TO_DO: тут предусмотреть вариант, что переданная коллекция может быть пустой
+        // TO_DO: и желаемое поведение - затереть файл, сделать его с пустым содержанием
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName)))
+        {
+;
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
     }
 }
