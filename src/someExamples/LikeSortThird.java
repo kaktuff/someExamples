@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by poskotinova-ls on 24.05.2016.
  */
-public class LikeSortSecond {
+public class LikeSortThird {
     private String fileName;//имя файла для сортировки
     private SortType sortType;//тип сортировки
     private int isNeedFillFile; //признак - нужно ли заполнить файл перед началом работы
@@ -26,7 +26,7 @@ public class LikeSortSecond {
         return fileList;
     }
 
-    public LikeSortSecond(String fileName, SortType sortType, int isNeedFillFile) {
+    public LikeSortThird(String fileName, SortType sortType, int isNeedFillFile) {
         this.fileName = fileName;
         this.sortType = sortType;
         this.isNeedFillFile = isNeedFillFile;
@@ -54,15 +54,13 @@ public class LikeSortSecond {
         Console.fillFile(this.getFileName(), this.getFileList());
     }
 
-    public List<String> getSortedList(){
-        //зальем файл построчно в коллекцию и отсортируем её
+    public List<String> getNotSortedList(){
         // пусть пока будет ArrayList
         // но т.к. нам нужно делать много вставок, то из этих соображений лучше бы подошёл LinkedList
-        // TO_DO: перенос из файла в коллекцию - это тоже метод, вытащить отдельно
         List<String> fileListInner = new ArrayList<>();
 
-// это не подходит, надо считывание ПОСТРОЧНО
-// чё-то запуталась чё этот коммент значит...
+        // это не подходит, надо считывание ПОСТРОЧНО
+       // чё-то запуталась чё этот коммент значит...
 
         try(BufferedReader reader = new BufferedReader(new FileReader(this.getFileName())))
         {
@@ -80,27 +78,61 @@ public class LikeSortSecond {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("длина коллекции == " + fileListInner.size());
+        //System.out.println("длина коллекции == " + fileListInner.size());
 
-        // TO_DO: здесь должно быть ветвление по типу сортировки:(по сути это метод диспетчер)
-        // TO_DO: то есть по суди IF и для каждого типа сортировки свой метод
-        // взяла готовый пример
-        // TO_DO: поискать другие варианты, плюс научиться писать этот код самомтсоятельно, чтоб от зубов отскакивал
-        Collections.sort(fileListInner, new Comparator<String>() {
-                    @Override
-                    public int compare(String o1, String o2) {
-                        return o1.toString().compareTo(o2.toString());
-                    }
-                }
-        );
+        return fileListInner;
+    }
+
+    public void sortList(List<String> iListForSort, SortType iSortType){
+       if (iSortType == SortType.ALPHABETICALLY){
+           // взяла готовый пример
+           // TO_DO: поискать другие варианты, плюс научиться писать этот код самомтсоятельно, чтоб от зубов отскакивал
+           // TO_DO: каждый тип сортировки, должен быть тоже отдельным методом
+           Collections.sort(iListForSort, new Comparator<String>() {
+                       @Override
+                       public int compare(String o1, String o2) {
+                           return o1.toString().compareTo(o2.toString());
+                       }
+                   }
+           );
+       }
+       else if (iSortType == SortType.LENGTH_STRING_ASC) {
+           Collections.sort(iListForSort, new Comparator<String>() {
+                       @Override
+                       public int compare(String o1, String o2) {
+                           return o2.length() - o1.length();
+                       }
+                   }
+           );
+       }
+       // (!) TO_DO: почему-то сортирует всё равно в порядке возрастания длины, а надо по убыванию
+       else if (iSortType == SortType.LENGTH_STRING_DESC) {
+           Collections.sort(iListForSort, new Comparator<String>() {
+                       @Override
+                       public int compare(String o1, String o2) {
+                           return o1.length() - o2.length();
+                       }
+                   }
+           );
+       }
+    }
+
+    // перегрузка для метода sortList, типа с параметром по умолчанию для сортировки
+    //@Override
+    public void sortList(List<String> iListForSort){
+        sortList(iListForSort, SortType.ALPHABETICALLY);
 
         // теперь нужно вывести коллекцию на экран
         // TO_DO: вынести конечно же в отдельный метод, пока просто отладка
-        System.out.println(fileListInner);
+        //System.out.println(iListForSort);
+    }
+    public List<String> getSortedList(){
+        //зальем файл построчно в коллекцию и отсортируем её
+        List<String> fileListInner = getNotSortedList();
 
-        // TO_DO: по-хорошему, мы же файл сортируем
-        // TO_DO: поэтому нужно коллекцию целиком записать в файл и вывести его на экран
-        // TO_DO: а на экран его вывожу просто для проверки
+        // метод для сортировки
+        sortList(fileListInner);
+        System.out.println("отсортированная коллекция - " + fileListInner);
         return fileListInner;
     }
 
@@ -142,8 +174,8 @@ public class LikeSortSecond {
         likeSortThird.fillFile();
 
         // теперь запустим механизм сортировки
-        System.out.println("isNeedFillFile - " + isNeedFillFile);
-        System.out.println("fileName - " + fileName);
+        //System.out.println("isNeedFillFile - " + isNeedFillFile);
+        //System.out.println("fileName - " + fileName);
 
         likeSortThird.doSort();
     }
