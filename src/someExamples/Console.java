@@ -180,10 +180,15 @@ public class Console {
         // TO_DO: и желаемое поведение - затереть файл, сделать его с пустым содержанием
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(fileName)))
         {
-;
+            for (Object oneElementList : listName){
+                bw.write(oneElementList.toString());
+                bw.newLine();
+            }
+
+            bw.flush();
+            bw.close();
         }
         catch(IOException ex){
-
             System.out.println(ex.getMessage());
         }
     }
