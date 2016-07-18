@@ -58,7 +58,7 @@ public class LikeSortSecond {
         //зальем файл построчно в коллекцию и отсортируем её
         // пусть пока будет ArrayList
         // но т.к. нам нужно делать много вставок, то из этих соображений лучше бы подошёл LinkedList
-        // TO_DO: перенос из файла в коллекцию - это тоже метод, вытащить отдельно
+        // TODO: перенос из файла в коллекцию - это тоже метод, вытащить отдельно
         List<String> fileListInner = new ArrayList<>();
 
 // это не подходит, надо считывание ПОСТРОЧНО
@@ -67,7 +67,7 @@ public class LikeSortSecond {
         try(BufferedReader reader = new BufferedReader(new FileReader(this.getFileName())))
         {
             // читаем построчно
-            // TO_DO:  переименовать переменную по-человечески
+            // TODO:  переименовать переменную по-человечески
             String str;
             while((str=reader.readLine())!= null){
 
@@ -82,10 +82,10 @@ public class LikeSortSecond {
 
         System.out.println("длина коллекции == " + fileListInner.size());
 
-        // TO_DO: здесь должно быть ветвление по типу сортировки:(по сути это метод диспетчер)
-        // TO_DO: то есть по суди IF и для каждого типа сортировки свой метод
+        // TODO: здесь должно быть ветвление по типу сортировки:(по сути это метод диспетчер)
+        // TODO: то есть по суди IF и для каждого типа сортировки свой метод
         // взяла готовый пример
-        // TO_DO: поискать другие варианты, плюс научиться писать этот код самомтсоятельно, чтоб от зубов отскакивал
+        // TODO: поискать другие варианты, плюс научиться писать этот код самомтсоятельно, чтоб от зубов отскакивал
         Collections.sort(fileListInner, new Comparator<String>() {
                     @Override
                     public int compare(String o1, String o2) {
@@ -95,12 +95,12 @@ public class LikeSortSecond {
         );
 
         // теперь нужно вывести коллекцию на экран
-        // TO_DO: вынести конечно же в отдельный метод, пока просто отладка
+        // TODO: вынести конечно же в отдельный метод, пока просто отладка
         System.out.println(fileListInner);
 
-        // TO_DO: по-хорошему, мы же файл сортируем
-        // TO_DO: поэтому нужно коллекцию целиком записать в файл и вывести его на экран
-        // TO_DO: а на экран его вывожу просто для проверки
+        // TODO: по-хорошему, мы же файл сортируем
+        // TODO: поэтому нужно коллекцию целиком записать в файл и вывести его на экран
+        // TODO: а на экран его вывожу просто для проверки
         return fileListInner;
     }
 
@@ -120,15 +120,15 @@ public class LikeSortSecond {
         isNeedFillFile = console.readMark();
 
         // считывание имени файла и проверку на его существование лучше вынести в отдельный метод
-        // TO_DO: сейчас некритично, можно потом поучиться делать
-        // TO_DO: проверить корректность пути
-        // TO_DO: проверить, что если выбрали признак, что файл существует, что он действительно существует
+        // TODO: сейчас некритично, можно потом поучиться делать
+        // TODO: проверить корректность пути
+        // TODO: проверить, что если выбрали признак, что файл существует, что он действительно существует
 //System.out.println("Введите путь до файла(существующего или того, что будем создавать)");
 //String fileName = console.scannerIn.nextLine();
 
         Scanner scannerIn = new Scanner(System.in);
-        // TO_DO: обработчики на наличие файла и тд
-        // TO_DO: считывание имени файла и проверку на его существование лучше вынести в отдельный метод
+        // TODO: обработчики на наличие файла и тд
+        // TODO: считывание имени файла и проверку на его существование лучше вынести в отдельный метод
         System.out.println("Введите путь до файла(существующего или того, что будем создавать). Для себя, пусть пока такой - C:\\work\\git\\someExamples\\src\\fileLikeSort.txt");
         String fileName = scannerIn.nextLine();
 
@@ -136,15 +136,15 @@ public class LikeSortSecond {
         sortType = console.readSortType();
 
         // все данные считаны, создади объект
-        LikeSortThird likeSortThird = new LikeSortThird(fileName, sortType, isNeedFillFile);
+        LikeSortSecond likeSortSecond = new LikeSortSecond(fileName, sortType, isNeedFillFile);
 
         // заполним файл есть это необходимо, данными с консоли
-        likeSortThird.fillFile();
+        likeSortSecond.fillFile();
 
         // теперь запустим механизм сортировки
         System.out.println("isNeedFillFile - " + isNeedFillFile);
         System.out.println("fileName - " + fileName);
 
-        likeSortThird.doSort();
+        likeSortSecond.doSort();
     }
 }

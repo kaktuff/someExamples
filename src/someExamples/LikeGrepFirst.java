@@ -42,8 +42,8 @@ public class LikeGrepFirst {
                 //bw.write("\n\r");
                 //bw.write("\n");
                 // то есть каждую строку сбрасываем с буфера
-                // TO_DO: это безопасно, но слишком частые обращаения к диск
-                // TO_DO: плюс посмотреть по теории делается ли закрытие файла автоматом
+                // TODO: это безопасно, но слишком частые обращаения к диск
+                // TODO: плюс посмотреть по теории делается ли закрытие файла автоматом
                 bw.flush();
 
 
@@ -54,20 +54,20 @@ public class LikeGrepFirst {
 
             //bw.write("Before close" + "\n");
             //bw.flush();
-            // TO_DO: наверное тоже должен быть в обработчике
+            // TODO: наверное тоже должен быть в обработчике
             bw.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        //TO_DO: разбить на классы и методы, продумать правильную структуру
+        //TODO: разбить на классы и методы, продумать правильную структуру
         //теперь организуем поиск по файлу
         // будем считывать построчно и искать в строке подстроку
         oneLine = null;
         try(BufferedReader fr = new BufferedReader (new FileReader("d:\\java_2016\\home.work\\likeGrepOutFile.txt"))){
             while ((oneLine = fr.readLine()) != null) {
-                //TO_DO: тут сделать не sout, а нормально вывод в поток, хотя хз как лучше
+                //TODO: тут сделать не sout, а нормально вывод в поток, хотя хз как лучше
                 if (oneLine.contains(SEARCHPHRASE)){
                     System.out.println(oneLine);
                 }

@@ -90,12 +90,12 @@ public class LikeGrep {
             ){
                 while (!(oneLine = br.readLine()).equals("ESC")) {
                     // то есть каждую строку сбрасываем с буфера
-                    // TO_DO: это безопасно, но слишком частые обращаения к диск
+                    // TODO: это безопасно, но слишком частые обращаения к диск
                     bw.write(oneLine + "\n");
                     bw.flush();
                 }
 
-                // TO_DO: наверное тоже должен быть в обработчике
+                // TODO: наверное тоже должен быть в обработчике
                 bw.close();
 
             } catch (Exception e) {
@@ -111,7 +111,7 @@ public class LikeGrep {
 
         try(BufferedReader fr = new BufferedReader (new FileReader(this.getFileName()))){
             while ((oneLine = fr.readLine()) != null) {
-                //TO_DO: тут сделать не sout, а нормально вывод в поток, хотя хз как лучше
+                //TODO: тут сделать не sout, а нормально вывод в поток, хотя хз как лучше
                 if (oneLine.contains(this.getSearchWord())){
                     System.out.println(oneLine);
                 }

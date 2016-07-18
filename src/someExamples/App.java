@@ -34,7 +34,7 @@ public class App {
         contentPane.add(new JButton("Select File5"));
         contentPane.add(new JButton("Select File6"));*/
 
-        // TO_DO: разобраться с этим!
+        // TODO: разобраться с этим!
         JButton button;
         GridBagConstraints c = new GridBagConstraints();
 
