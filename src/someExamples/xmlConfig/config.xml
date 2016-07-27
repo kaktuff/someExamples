@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Services>
+<Service>
+    <name>serviceName</name>
+    <roles>
+        <role login = "l" password = "p">mobileLibertEx</role>
+        <role login = "l2" password = "p2">WebLibertEx</role>
+    </roles>
+</Service>
+
+<Service>
+    <name>serviceName2</name>
+    <roles>
+        <role login = "l" password = "p">mobileLibertEx</role>
+        <role login = "l2" password = "p2">WebLibertEx</role>
+    </roles>
+</Service>
+</Services>
