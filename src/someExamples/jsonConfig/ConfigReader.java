@@ -53,3 +53,12 @@ public class ConfigReader {
 //{
 //        "serverName":"test"
 //}
+// хотела пихать в конфиги такой формат
+/*
+{serverName: fxb2
+        serviceName : bonusApi
+        roleName:mibile
+        login:
+        passw:
+        }
+*/
