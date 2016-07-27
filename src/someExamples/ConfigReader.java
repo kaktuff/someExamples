@@ -23,6 +23,7 @@ public class ConfigReader {
     //TODO: взяла из примера. но "public static void" мне кжается можно на что-то изменить
     //TODO: throws Exception надо убрать и сделать корректную обработку new FileInputStream("C:\\work\\git\\someExamples\\src\\someExamples\\ConfigReader.java"),
     //TODO: которая и выбрасывает ошибку
+    //TODO: вот тут пример http://j4web.ru/java-json/primer-ispolzovaniya-jackson-java-obekty-i-json.html
     public static void readConfig() throws Exception{
         ObjectMapper mapper = new ObjectMapper();
         Server server = (Server)mapper.readValue(new FileInputStream("C:\\work\\git\\someExamples\\src\\someExamples\\config.json"), Server.class);
