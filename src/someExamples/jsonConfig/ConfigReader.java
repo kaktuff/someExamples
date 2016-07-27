@@ -1,6 +1,8 @@
 package someExamples.jsonConfig;
 
+//import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+//import org.json.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -36,6 +38,29 @@ public class ConfigReader {
 //        JSONObject requisite_json = (JSONObject) requisite;
 //        JSONObject bankInfo_json = (JSONObject)(requisite_json.get("bankInfo"));
    // }
+/*
+String json = "{paramsArray: [\"first\", 100],"
+            + "paramsObj: {one: \"two\", three: \"four\"},"
+            + "paramsStr: \"some string\"}";
+
+JSONParser parser = new JSONParser();
+
+Object obj = parser.parse(json);
+JSONObject jsonObj = (JSONObject) obj;
+System.out.println(jsonObj.get("paramsStr"));
+// some string
+
+JsonObject jo = jsonObj.get("paramsObj");
+System.out.println(jo.get("three"));
+// four
+
+JsonArray ja = jsonObj.get("paramsArray");
+System.out.println(ja.get(1));
+// 100
+* */
+//    public static void readConfigParser(){
+//        JsonParser parser = new JsonParser();
+//    }
 
     //TODO: взяла из примера. но "public static void" мне кжается можно на что-то изменить
     //TODO: throws Exception надо убрать и сделать корректную обработку new FileInputStream("C:\\work\\git\\someExamples\\src\\someExamples\\ConfigReader.java"),
