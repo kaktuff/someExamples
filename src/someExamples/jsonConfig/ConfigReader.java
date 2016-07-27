@@ -27,6 +27,16 @@ public class ConfigReader {
         }
     }
 
+// аннотации, порядок считаывания ?
+    // возожно как-то так парсить нужно
+   // public static void readConfigJsArr(){
+        // JSONObject response_json = (JSONObject) new JSONParser().parse(response_string);
+        //JSONArray requisites_json = (JSONArray)(response_json.get("requisites"));
+//    for(Object requisite : requisites_json){
+//        JSONObject requisite_json = (JSONObject) requisite;
+//        JSONObject bankInfo_json = (JSONObject)(requisite_json.get("bankInfo"));
+   // }
+
     //TODO: взяла из примера. но "public static void" мне кжается можно на что-то изменить
     //TODO: throws Exception надо убрать и сделать корректную обработку new FileInputStream("C:\\work\\git\\someExamples\\src\\someExamples\\ConfigReader.java"),
     //TODO: которая и выбрасывает ошибку
