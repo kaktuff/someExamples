@@ -2,6 +2,7 @@ package someExamples.jsonConfig;
 
 //import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jdk.nashorn.internal.parser.JSONParser;
 //import org.json.*;
 
 import java.io.BufferedReader;
@@ -59,7 +60,7 @@ System.out.println(ja.get(1));
 // 100
 * */
 //    public static void readConfigParser(){
-//        JsonParser parser = new JsonParser();
+//        JSONParser parser = new JSONParser();
 //    }
 
     //TODO: взяла из примера. но "public static void" мне кжается можно на что-то изменить
