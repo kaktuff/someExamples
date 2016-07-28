@@ -1,6 +1,9 @@
 {
-  "fxb2": {"serviceName": "bonusApiWs"
-  },
+  "fxb2": {"bonusApiWs": {"mobileLibertex": {"login":"fxb2.bonusApiWs.mobileLibertex.login"
+                                           , "passw":"fxb2.bonusApiWs.mobileLibertex.passw"
+                                            }
+                         }
+          },
   "fxb3": "test3",
   "fxb4": "test4"
 }

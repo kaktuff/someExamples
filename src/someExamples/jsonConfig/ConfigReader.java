@@ -2,11 +2,11 @@ package someExamples.jsonConfig;
 
 //import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.parser.JSONParser;
-//import org.json.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+
+//import org.json.*;
 
 /** Класс для считывания конфига
  *
@@ -62,25 +62,20 @@ System.out.println(ja.get(1));
 //    public static void readConfigParser(){
 //        JSONParser parser = new JSONParser();
 //    }
-
     //TODO: взяла из примера. но "public static void" мне кжается можно на что-то изменить
     //TODO: throws Exception надо убрать и сделать корректную обработку new FileInputStream("C:\\work\\git\\someExamples\\src\\someExamples\\ConfigReader.java"),
     //TODO: которая и выбрасывает ошибку
     //TODO: вот тут пример http://j4web.ru/java-json/primer-ispolzovaniya-jackson-java-obekty-i-json.html
     public static Server readConfig() throws Exception{
-        try (BufferedReader configFile = new BufferedReader(new FileReader("D:\\git\\someExamples\\src\\someExamples\\jsonConfig\\config.json"))){
+        //try (BufferedReader configFile = new BufferedReader(new FileReader("D:\\git\\someExamples\\src\\someExamples\\jsonConfig\\config.json"))){
         // это ссылка для рабочего компа
-        //try (BufferedReader configFile = new BufferedReader(new FileReader("C:\\work\\git\\someExamples\\src\\someExamples\\config.json"))){
+        try (BufferedReader configFile = new BufferedReader(new FileReader("C:\\work\\git\\someExamples\\src\\someExamples\\jsonConfig\\config.json"))){
             ObjectMapper mapper = new ObjectMapper();
             Server server = (Server) mapper.readValue(configFile, Server.class);
             System.out.println(server);
 
             return server;
         }
-        //ObjectMapper mapper = new ObjectMapper();
-        //Server server = (Server)mapper.readValue(new FileInputStream("C:\\work\\git\\someExamples\\src\\someExamples\\config.json"), Server.class);
-
-        //System.out.println(server);
     }
 }
 
@@ -89,7 +84,7 @@ System.out.println(ja.get(1));
 //{
 //        "serverName":"test"
 //}
-// хотела пихать в конфиги такой формат
+// хотела пихать в конфиги такой формат, но тогда точно нужна будет карта, а хотелось бы обойтись без неё
 /*
 {serverName: fxb2
         serviceName : bonusApi
