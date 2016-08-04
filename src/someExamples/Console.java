@@ -167,8 +167,8 @@ public class Console {
                     bw.flush();
                 }
 
-                // TODO: наверное тоже должен быть в обработчике
-                bw.close();
+                //try with resources сам закроет
+                //bw.close();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -188,7 +188,8 @@ public class Console {
             }
 
             bw.flush();
-            bw.close();
+            //try with resources сам закроет
+            //bw.close();
         }
         catch(IOException ex){
             System.out.println(ex.getMessage());
